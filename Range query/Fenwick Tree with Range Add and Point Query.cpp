@@ -1,14 +1,10 @@
-Fenweek tree
-We'll build a Fenwick Tree where:
+// Fenweek tree
+// We'll build a Fenwick Tree where:
 
-add(l, x) and add(r+1, -x) lets us apply +x to range [l, r].
+// add(l, x) and add(r+1, -x) lets us apply +x to range [l, r].
 
-query(k) gives value at position k after all updates.
+// query(k) gives value at position k after all updates.
 
-✅ Full Code (Fast, Clean, AC):
-cpp
-Copier
-Modifier
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
