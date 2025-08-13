@@ -18,6 +18,25 @@ struct DSU {
     }
 };
 
+// trace the tree 
+
+pair<ll, vector<pair<int,int>>> kruskal_trace(vector<tuple<int,int,ll>>& edges, int n) {
+    sort(edges.begin(), edges.end(), [](auto &a, auto &b){ return get<2>(a) < get<2>(b); });
+    DSU dsu(n);
+    ll total = 0;
+    vector<pair<int,int>> mst_edges;
+
+    for (auto &e: edges) {
+        int u,v; ll w; tie(u,v,w) = e;
+        if (dsu.join(u,v)) {
+            total += w;
+            mst_edges.push_back({u,v}); // store the chosen edge
+        }
+    }
+    if ((int)mst_edges.size() != n-1) return {-1, {}};
+    return {total, mst_edges};
+}
+
 /**
  * Kruskal's algorithm for MST using sorted edge list.
  * Time: O(E log E), Space: O(V)
@@ -53,4 +72,5 @@ ll prim(const vector<vector<pair<int,ll>>>& graph) {
         }
     }
     return ans;
+
 }
